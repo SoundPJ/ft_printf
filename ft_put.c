@@ -6,7 +6,7 @@
 /*   By: pjerddee <pjerddee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 10:02:43 by pjerddee          #+#    #+#             */
-/*   Updated: 2022/05/22 12:32:31 by pjerddee         ###   ########.fr       */
+/*   Updated: 2022/05/23 03:38:41 by pjerddee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,18 @@ int	ft_putnbr_x(long n, int base, int ul)
 		write(1, num[ul] + (n % base), 1);
 	}
 	return (len);
+}
+
+t_cv *ft_putpercent(t_cv *spcf)
+{
+	if (spcf.width == 0
+	{
+
+	}
+	else
+	{
+
+	}
 }
 
 // int	main(void)
