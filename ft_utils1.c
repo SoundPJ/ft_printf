@@ -6,12 +6,13 @@
 /*   By: pjerddee <pjerddee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 15:44:27 by pjerddee          #+#    #+#             */
-/*   Updated: 2022/05/23 03:10:36 by pjerddee         ###   ########.fr       */
+/*   Updated: 2022/06/15 20:10:18 by pjerddee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+//check if char c in str s. If yes return 1, return 0 otherwise.
 int	ft_check(char *s, char c)
 {
 	int		i;
@@ -26,6 +27,7 @@ int	ft_check(char *s, char c)
 	return 0;
 }
 
+//For example, "Hello" return 5
 int	ft_strlen(char *s)
 {
 	int	len;
@@ -36,6 +38,7 @@ int	ft_strlen(char *s)
 	return (len);
 }
 
+//Initialise cv
 void	t_cv_init(t_cv *spcf)
 {
 	spcf->type = '\0';
@@ -45,6 +48,22 @@ void	t_cv_init(t_cv *spcf)
 	spcf->width = 0;
 	spcf->precision = 0;
 	spcf->len = 0;
+}
+
+// return number of digits of n, ignoring minus sign
+int	ft_getdigit(long n, int base)
+{
+	int	len;
+
+	len = 0;
+	if (n == 0)
+		return (1);
+	while (n != 0)
+	{
+		n /= base;
+		len++;
+	}
+	return (len);
 }
 
 // int main()
