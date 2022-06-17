@@ -6,53 +6,37 @@
 /*   By: pjerddee <pjerddee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 10:02:43 by pjerddee          #+#    #+#             */
-/*   Updated: 2022/06/15 20:23:01 by pjerddee         ###   ########.fr       */
+/*   Updated: 2022/06/17 23:58:45 by pjerddee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putchar(char c)
+int	ft_put()
 {
-	write (1, &c, 1);
-	return 1;
+
 }
 
+//For putchar and putstr
 int	ft_putstr(char *s)
 {
 	int	len = 0;
 	while (s[len] != '\0')
 	{
-		ft_putchar(s[len]);
+		write(1, s + len, 1);
 		len++;
 	}
 	return len;
 }
 
+//For put pointer
 int	ft_putp(unsigned long n)
 {
-	char	*num;
-	unsigned long	tmp;
 	int		len;
 
 	len = 0;
-	tmp = n;
-	num = "0123456789abcdef";
 	ft_putstr("0x");
-	if (n < 16)
-		write(1, num + (n % 16), 1);
-	else
-	{
-		ft_putp(n / 16);
-		write(1, num + (n % 16), 1);
-	}
-	if (tmp == 0)
-		return (1);
-	while (tmp != 0)
-	{
-		tmp /= 16;
-		len++;
-	}
+	len = 2 + ft_putnbr((long)n, 16, LOWER);
 	return (len);
 }
 
@@ -84,6 +68,6 @@ int	ft_putnbr(long n, int base, int ul)
 
 int	ft_putpercent()
 {
-	ft_putchar('%');
+	ft_putstr("%");
 	return 1;
 }

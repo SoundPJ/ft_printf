@@ -6,7 +6,7 @@
 /*   By: pjerddee <pjerddee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 08:26:54 by pjerddee          #+#    #+#             */
-/*   Updated: 2022/06/17 12:48:20 by pjerddee         ###   ########.fr       */
+/*   Updated: 2022/06/18 00:00:33 by pjerddee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,5 +108,13 @@ int	main(void)
 	// get_spcf("#04x");
 	// get_spcf("-#4x");
 	// get_spcf("#2.1x");
+
+	// ft_putchar('c');
+	// ft_putstr("Hello");
+	// int a = 2;
+	// printf("%p\n", &a);
+	// ft_putp((unsigned long)&a);
+
+	ft_printf("Hello");
 	return (0);
 }
