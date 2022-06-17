@@ -6,18 +6,20 @@
 /*   By: pjerddee <pjerddee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 08:26:54 by pjerddee          #+#    #+#             */
-/*   Updated: 2022/06/16 00:22:36 by pjerddee         ###   ########.fr       */
+/*   Updated: 2022/06/17 12:25:30 by pjerddee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
 //Priority # > + > space
-char	set_flag1(char o_flag1, char n_flag_1)
+char	set_flag1(char o_flag1, char n_flag1)
 {
 	if (o_flag1 == '\0')
-		return n_flag_1;
-	else if (o_flag1 != n_flag_1)
+		return n_flag1;
+	if (o_flag1 == '#' || n_flag1 == '#')
+		return '#';
+	else if (o_flag1 == '+' || n_flag1 == '+')
 		return '+';
 	else
 		return ' ';
@@ -25,11 +27,11 @@ char	set_flag1(char o_flag1, char n_flag_1)
 
 
 //Priority - > 0
-char	set_flag2(char o_flag2, char n_flag_2)
+char	set_flag2(char o_flag2, char n_flag2)
 {
 	if (o_flag2 == '\0')
-		return n_flag_2;
-	else if (o_flag2 != n_flag_2)
+		return n_flag2;
+	if (o_flag2 == '-' || n_flag2 == '-')
 		return '-';
 	else
 		return '0';
@@ -59,7 +61,7 @@ t_cv	get_spcf(char *s)
 		s++;
 	}
 	ret.type = *s;
-	printf("type = %c flag1 = %c flag2 = %c sharp = %d width = %d precision = %d len = %d\n", ret.type, ret.flag1, ret.flag2, ret.sharp, ret.width, ret.precision, ret.len);
+	// printf("type = %c flag1 = %c flag2 = %c sharp = %d width = %d precision = %d len = %d\n", ret.type, ret.flag1, ret.flag2, ret.sharp, ret.width, ret.precision, ret.len);
 	return (ret);
 }
 
@@ -96,7 +98,7 @@ int	main(void)
 	// ft_putchar('a');
 	// ft_putstr("Hello");
 	// printf(" ret:%d\n", ft_putnbr(-152483, 10, UPPER));
-	printf("%+-2.4d", 9);
+	// printf("%+-2.4d", 9);
 	// void* a = "Hello";
 	// printf("%p", a);
 	return (0);
