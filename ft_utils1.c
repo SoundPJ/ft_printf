@@ -6,7 +6,7 @@
 /*   By: pjerddee <pjerddee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 15:44:27 by pjerddee          #+#    #+#             */
-/*   Updated: 2022/06/17 23:37:19 by pjerddee         ###   ########.fr       */
+/*   Updated: 2022/06/22 23:45:31 by pjerddee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ void	t_cv_init(t_cv *spcf)
 	spcf->flag2 = '\0';
 	spcf->width = 0;
 	spcf->precision = 0;
-	spcf->len = 0;
 }
 
 // return number of digits of n, ignoring minus sign
@@ -64,12 +63,3 @@ int	ft_getdigit(long n, int base)
 	}
 	return (len);
 }
-
-// int main()
-// {
-// 	t_cv ret;
-
-// 	t_cv_init(&ret);
-// 	printf("type = %c\tflag1 = %c\tflag2 = %c\twidth = %d\tprecision = %d\tlen = %d\n", ret.type, ret.flag1, ret.flag2, ret.width, ret.precision, ret.len);
-// 	return (0);
-// }

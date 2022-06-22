@@ -6,11 +6,11 @@
 /*   By: pjerddee <pjerddee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 23:38:24 by pjerddee          #+#    #+#             */
-/*   Updated: 2022/06/17 23:56:32 by pjerddee         ###   ########.fr       */
+/*   Updated: 2022/06/22 23:22:24 by pjerddee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.c"
+#include "ft_printf.h"
 
 int	ft_sharp(t_cv *spcf)
 {

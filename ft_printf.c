@@ -6,7 +6,7 @@
 /*   By: pjerddee <pjerddee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 08:26:54 by pjerddee          #+#    #+#             */
-/*   Updated: 2022/06/18 00:00:33 by pjerddee         ###   ########.fr       */
+/*   Updated: 2022/06/23 00:22:12 by pjerddee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,32 +37,53 @@ static char	set_flag2(char o_flag2, char n_flag2)
 		return '0';
 }
 
-t_cv	get_spcf(char *s)
+static t_cv	get_spcf(const char **s)
 {
 	t_cv	ret;
 	int		dot;
 
 	t_cv_init(&ret);
 	dot = 0;
-	while (!ft_check(CONVERSION, *s))
+	while (!ft_check(CONVERSION, **s))
 	{
-		if (ft_check(FLAG1, *s) && ret.width == 0 && ret.precision == 0)
-			ret.flag1 = set_flag1(ret.flag1, *s);
-		else if (ft_check(".", *s))
+		if (ft_check(FLAG1, **s) && ret.width == 0 && ret.precision == 0)
+			ret.flag1 = set_flag1(ret.flag1, **s);
+		else if (ft_check(".", **s))
 			dot = 1;
-		else if (ft_check("#", *s))
+		else if (ft_check("#", **s))
 			ret.flag1 = '#';
-		else if (ft_check(FLAG2, *s) && dot == 0 && ret.width == 0)
-			ret.flag2 = set_flag2(ret.flag2, *s);
-		else if (ft_check(DIGIT, *s) && dot == 0)
-			ret.width = (ret.width * 10) + (*s - '0');
-		else if (ft_check(DIGIT, *s))
-			ret.precision = (ret.precision * 10) + (*s - '0');
-		s++;
+		else if (ft_check(FLAG2, **s) && dot == 0 && ret.width == 0)
+			ret.flag2 = set_flag2(ret.flag2, **s);
+		else if (ft_check(DIGIT, **s) && dot == 0)
+			ret.width = (ret.width * 10) + (**s - '0');
+		else if (ft_check(DIGIT, **s))
+			ret.precision = (ret.precision * 10) + (**s - '0');
+		(*s)++;
 	}
-	ret.type = *s;
-	printf("type = '%c' flag1 = '%c' flag2 = '%c' width = '%d' precision = '%d' len = '%d'\n", ret.type, ret.flag1, ret.flag2, ret.width, ret.precision, ret.len);
+	ret.type = **s;
+	// printf("type = '%c' flag1 = '%c' flag2 = '%c' width = '%d' precision = '%d'\n", ret.type, ret.flag1, ret.flag2, ret.width, ret.precision);
 	return (ret);
+}
+
+// return printed len for a flag that parse in
+static int ft_classify(t_cv spcf, va_list args)
+{
+	// if (spcf.type == 'c')
+	// 	return ;
+	// else if (spcf.type == 's')
+	// 	return ft_putstr()
+	// else if (spcf.type == 'p')
+	// 	return
+	if (spcf.type == 'd' || spcf.type == 'i')
+		return ft_putnbr((int)args, 10, LOWER);
+	else if (spcf.type == 'u')
+		return ft_putnbr((unsigned int)args, 10, LOWER);
+	else if (spcf.type == 'x')
+		return ft_putnbr((unsigned int)-12, 16, LOWER);
+	else if (spcf.type == 'X')
+		return ft_putnbr((unsigned int)-12, 16, UPPER);
+	else if (spcf.type == '%')
+		return ft_putpercent();
 }
 
 int	ft_printf(const char *placeholders, ...)
@@ -81,6 +102,7 @@ int	ft_printf(const char *placeholders, ...)
 		else if (flag == 1)
 		{
 			flag = 0;
+			get_spcf(&placeholders);
 			// len += ft_flag(placeholders);
 		}
 		else if (flag == 0)
@@ -94,27 +116,29 @@ int	ft_printf(const char *placeholders, ...)
 
 int	main(void)
 {
-	// get_spcf("+5d");
-	// get_spcf("+-5d");
-	// get_spcf("-+5d");
-	// get_spcf("+0.4d");
+// 	// get_spcf("+5d");
+// 	// get_spcf("+-5d");
+// 	// get_spcf("-+5d");
+// 	// get_spcf("+0.4d");
 
-	// get_spcf("- 6d");
-	// get_spcf("0 6d");
-	// get_spcf("- 7.4d");
-	// get_spcf("- 5.4d");
-	// get_spcf("0 .5d");
+// 	// get_spcf("- 6d");
+// 	// get_spcf("0 6d");
+// 	// get_spcf("- 7.4d");
+// 	// get_spcf("- 5.4d");
+// 	// get_spcf("0 .5d");
 
-	// get_spcf("#04x");
-	// get_spcf("-#4x");
-	// get_spcf("#2.1x");
+// 	// get_spcf("#04x");
+// 	// get_spcf("-#4x");
+// 	// get_spcf("#2.1x");
 
-	// ft_putchar('c');
-	// ft_putstr("Hello");
-	// int a = 2;
-	// printf("%p\n", &a);
-	// ft_putp((unsigned long)&a);
+// 	// ft_putchar('c');
+// 	// ft_putstr("Hello");
+// 	int a = 2;
+// 	printf("%p\n", &a);
+// 	// ft_putp((unsigned long)&a);
 
-	ft_printf("Hello");
+	// ft_printf("Hello %d", 1);
+	printf("%x\n", -12);
+	ft_putnbr((unsigned int)-12, 16, LOWER);
 	return (0);
 }
