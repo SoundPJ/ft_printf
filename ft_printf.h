@@ -6,7 +6,7 @@
 /*   By: pjerddee <pjerddee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 08:31:30 by pjerddee          #+#    #+#             */
-/*   Updated: 2022/06/23 00:00:02 by pjerddee         ###   ########.fr       */
+/*   Updated: 2022/06/25 23:52:11 by pjerddee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ int	ft_getdigit(long n, int base);
 int	ft_sharp(t_cv *spcf);
 int ft_space(t_cv *spcf, long val);
 int ft_plus(t_cv *spcf, long val);
+int	ft_putpercent();
+int	ft_putchar(char c);
 void	t_cv_init(t_cv *spcf);
 // t_cv	get_spcf(char *s);
 

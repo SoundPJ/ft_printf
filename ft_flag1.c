@@ -6,7 +6,7 @@
 /*   By: pjerddee <pjerddee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 23:38:24 by pjerddee          #+#    #+#             */
-/*   Updated: 2022/06/22 23:22:24 by pjerddee         ###   ########.fr       */
+/*   Updated: 2022/06/25 23:43:15 by pjerddee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,24 @@ int	ft_sharp(t_cv *spcf)
 		return ft_putstr("0x");
 	else if (spcf -> type == 'X')
 		return ft_putstr("0X");
+	else
+		return 0;
 }
 
 int ft_space(t_cv *spcf, long val)
 {
 	if (val >= 0)
 		return ft_putstr(" ");
+	else
+		return 0;
 }
 
 int ft_plus(t_cv *spcf, long val)
 {
 	if (val >= 0)
 		return ft_putstr("+");
+	else
+		return 0;
 }
+
+// int	ft_flag1()

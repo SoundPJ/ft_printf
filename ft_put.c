@@ -6,15 +6,17 @@
 /*   By: pjerddee <pjerddee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 10:02:43 by pjerddee          #+#    #+#             */
-/*   Updated: 2022/06/22 23:48:20 by pjerddee         ###   ########.fr       */
+/*   Updated: 2022/06/25 23:46:13 by pjerddee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-// int	ft_put()
-// {
-// }
+int	ft_putchar(char c)
+{
+	write(1, &c, 1);
+	return 1;
+}
 
 //For putchar and putstr
 int	ft_putstr(char *s)

@@ -6,7 +6,7 @@
 /*   By: pjerddee <pjerddee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 08:26:54 by pjerddee          #+#    #+#             */
-/*   Updated: 2022/06/23 00:22:12 by pjerddee         ###   ########.fr       */
+/*   Updated: 2022/06/25 23:53:39 by pjerddee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,27 +68,30 @@ static t_cv	get_spcf(const char **s)
 // return printed len for a flag that parse in
 static int ft_classify(t_cv spcf, va_list args)
 {
-	// if (spcf.type == 'c')
-	// 	return ;
-	// else if (spcf.type == 's')
-	// 	return ft_putstr()
-	// else if (spcf.type == 'p')
-	// 	return
-	if (spcf.type == 'd' || spcf.type == 'i')
-		return ft_putnbr((int)args, 10, LOWER);
+	if (spcf.type == 'c')
+		return ft_putchar((char)va_arg(args, int));
+	else if (spcf.type == 's')
+		return ft_putstr(va_arg(args, char *));
+	else if (spcf.type == 'p')
+		return ft_putp(va_arg(args, unsigned long));
+	else if (spcf.type == 'd' || spcf.type == 'i')
+		return ft_putnbr(va_arg(args, int), 10, LOWER);
 	else if (spcf.type == 'u')
-		return ft_putnbr((unsigned int)args, 10, LOWER);
+		return ft_putnbr(va_arg(args, unsigned int), 10, LOWER);
 	else if (spcf.type == 'x')
-		return ft_putnbr((unsigned int)-12, 16, LOWER);
+		return ft_putnbr(va_arg(args, unsigned int), 16, LOWER);
 	else if (spcf.type == 'X')
-		return ft_putnbr((unsigned int)-12, 16, UPPER);
-	else if (spcf.type == '%')
-		return ft_putpercent();
+		return ft_putnbr(va_arg(args, unsigned int), 16, UPPER);
+	// else if (spcf.type == '%')
+	// 	return ft_putpercent();
+	else
+		return 0;
 }
 
 int	ft_printf(const char *placeholders, ...)
 {
 	va_list	args;
+	t_cv	spcf;
 	int		len;
 	int		flag;
 
@@ -102,7 +105,14 @@ int	ft_printf(const char *placeholders, ...)
 		else if (flag == 1)
 		{
 			flag = 0;
-			get_spcf(&placeholders);
+			spcf = get_spcf(&placeholders);
+			if (spcf.type != '%')
+			{
+				// printf("%d", args);
+				ft_classify(spcf, args);
+			}
+			else
+				ft_putpercent();
 			// len += ft_flag(placeholders);
 		}
 		else if (flag == 0)
@@ -138,7 +148,23 @@ int	main(void)
 // 	// ft_putp((unsigned long)&a);
 
 	// ft_printf("Hello %d", 1);
+	printf("%c\n", 'A');
+	ft_printf("%c\n", 'A');
+	printf("%s\n", "Hello");
+	ft_printf("%s\n", "Hello");
+	// printf("%p\n", -12);
+	// ft_printf("%p\n", -12);
+	printf("%d\n", -12);
+	ft_printf("%d\n", -12);
+	printf("%u\n", -12);
+	ft_printf("%u\n", -12);
+	printf("%i\n", -12);
+	ft_printf("%i\n", -12);
 	printf("%x\n", -12);
-	ft_putnbr((unsigned int)-12, 16, LOWER);
+	ft_printf("%x\n", -12);
+	printf("%X\n", -12);
+	ft_printf("%X\n", -12);
+	printf("%%\n");
+	ft_printf("%%\n");
 	return (0);
 }
