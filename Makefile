@@ -6,15 +6,16 @@
 #    By: pjerddee <pjerddee@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/01 23:56:26 by pjerddee          #+#    #+#              #
-#    Updated: 2022/04/17 00:04:39 by pjerddee         ###   ########.fr        #
+#    Updated: 2022/06/26 00:04:07 by pjerddee         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 
-SRCS =	ft_utils1.c\
-		ft_utils2.c\
-		ft_printf.c
+SRCS =	ft_utils1.c	\
+		ft_flag1.c	\
+		ft_put.c	\
+		ft_printf.c	
 
 CFLAGS = -Wall -Werror -Wextra
 

@@ -6,7 +6,7 @@
 /*   By: pjerddee <pjerddee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 08:26:54 by pjerddee          #+#    #+#             */
-/*   Updated: 2022/06/25 23:53:39 by pjerddee         ###   ########.fr       */
+/*   Updated: 2022/06/26 00:00:35 by pjerddee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,28 +143,32 @@ int	main(void)
 
 // 	// ft_putchar('c');
 // 	// ft_putstr("Hello");
-// 	int a = 2;
+	int a = 2;
 // 	printf("%p\n", &a);
 // 	// ft_putp((unsigned long)&a);
 
-	// ft_printf("Hello %d", 1);
-	printf("%c\n", 'A');
-	ft_printf("%c\n", 'A');
-	printf("%s\n", "Hello");
-	ft_printf("%s\n", "Hello");
-	// printf("%p\n", -12);
-	// ft_printf("%p\n", -12);
-	printf("%d\n", -12);
-	ft_printf("%d\n", -12);
-	printf("%u\n", -12);
-	ft_printf("%u\n", -12);
-	printf("%i\n", -12);
-	ft_printf("%i\n", -12);
-	printf("%x\n", -12);
-	ft_printf("%x\n", -12);
-	printf("%X\n", -12);
-	ft_printf("%X\n", -12);
-	printf("%%\n");
-	ft_printf("%%\n");
+	// printf("Hey\n");
+	// ft_printf("Hey\n");
+	// printf("%c\n", 'A');
+	// ft_printf("%c\n", 'A');
+	// printf("%s\n", "Hello");
+	// ft_printf("%s\n", "Hello");
+	// printf("%p\n", &a);
+	// ft_printf("%p\n", &a);
+	// printf("%d\n", -12);
+	// ft_printf("%d\n", -12);
+	// printf("%u\n", -12);
+	// ft_printf("%u\n", -12);
+	// printf("%i\n", -12);
+	// ft_printf("%i\n", -12);
+	// printf("%x\n", -12);
+	// ft_printf("%x\n", -12);
+	// printf("%X\n", -12);
+	// ft_printf("%X\n", -12);
+	// printf("%%\n");
+	// ft_printf("%%\n");
+
+	printf("Hey %c %s %p %d %i %u %x %X %%\n", 'A', "Good", &a, -12, 42, 50, -12, -12);
+	ft_printf("Hey %c %s %p %d %i %u %x %X %%\n", 'A', "Good", &a, -12, 42, 50, -12, -12);
 	return (0);
 }
