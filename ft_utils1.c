@@ -6,7 +6,7 @@
 /*   By: pjerddee <pjerddee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 15:44:27 by pjerddee          #+#    #+#             */
-/*   Updated: 2022/06/22 23:45:31 by pjerddee         ###   ########.fr       */
+/*   Updated: 2022/06/26 02:29:51 by pjerddee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,20 +46,4 @@ void	t_cv_init(t_cv *spcf)
 	spcf->flag2 = '\0';
 	spcf->width = 0;
 	spcf->precision = 0;
-}
-
-// return number of digits of n, ignoring minus sign
-int	ft_getdigit(long n, int base)
-{
-	int	len;
-
-	len = 0;
-	if (n == 0)
-		return (1);
-	while (n != 0)
-	{
-		n /= base;
-		len++;
-	}
-	return (len);
 }

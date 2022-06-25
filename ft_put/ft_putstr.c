@@ -1,41 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_flag1.c                                         :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pjerddee <pjerddee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/17 23:38:24 by pjerddee          #+#    #+#             */
-/*   Updated: 2022/06/26 01:08:16 by pjerddee         ###   ########.fr       */
+/*   Created: 2022/06/26 01:48:11 by pjerddee          #+#    #+#             */
+/*   Updated: 2022/06/26 02:12:41 by pjerddee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../ft_printf.h"
 
-int	ft_sharp(t_cv *spcf)
+//For putstr
+int	ft_putstr(char *s)
 {
-	if (spcf -> type == 'x')
-		return ft_putstr("0x");
-	else if (spcf -> type == 'X')
-		return ft_putstr("0X");
-	else
-		return 0;
+	int	len = 0;
+	if (!s)
+	{
+		write(1, "(null)", 6);
+		return 6;
+	}
+	while (s[len] != '\0')
+	{
+		write(1, s + len, 1);
+		len++;
+	}
+	return len;
 }
-
-int ft_space(t_cv *spcf, long val)
-{
-	if (val >= 0)
-		return ft_putstr(" ");
-	else
-		return 0;
-}
-
-int ft_plus(t_cv *spcf, long val)
-{
-	if (val >= 0)
-		return ft_putstr("+");
-	else
-		return 0;
-}
-
-// int	ft_flag1()
