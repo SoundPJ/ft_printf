@@ -6,7 +6,7 @@
 /*   By: pjerddee <pjerddee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 08:26:54 by pjerddee          #+#    #+#             */
-/*   Updated: 2022/06/26 00:00:35 by pjerddee         ###   ########.fr       */
+/*   Updated: 2022/06/26 00:26:51 by pjerddee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,16 +109,19 @@ int	ft_printf(const char *placeholders, ...)
 			if (spcf.type != '%')
 			{
 				// printf("%d", args);
-				ft_classify(spcf, args);
+				// printf("len: %d\n", len);
+				len += ft_classify(spcf, args);
+				// printf("len: %d\n", len);
 			}
-			else
-				ft_putpercent();
-			// len += ft_flag(placeholders);
+			else if (spcf.type == '%')
+				len += ft_putpercent();;
 		}
 		else if (flag == 0)
+		{
 			write(1, placeholders, 1);
+			len++;	
+		}
 		placeholders++;
-		len++;
 	}
 	va_end(args);
 	return (len);
@@ -168,7 +171,28 @@ int	main(void)
 	// printf("%%\n");
 	// ft_printf("%%\n");
 
-	printf("Hey %c %s %p %d %i %u %x %X %%\n", 'A', "Good", &a, -12, 42, 50, -12, -12);
-	ft_printf("Hey %c %s %p %d %i %u %x %X %%\n", 'A', "Good", &a, -12, 42, 50, -12, -12);
+	// printf("ret: %d\n", printf("Hey\n"));
+	// printf("ret: %d\n", ft_printf("Hey\n"));
+	// printf("ret: %d\n", printf("%c\n", 'A'));
+	// printf("ret: %d\n", ft_printf("%c\n", 'A'));
+	// printf("%s\n", "Hello");
+	// ft_printf("%s\n", "Hello");
+	// printf("%p\n", &a);
+	// ft_printf("%p\n", &a);
+	// printf("%d\n", -12);
+	// ft_printf("%d\n", -12);
+	// printf("%u\n", -12);
+	// ft_printf("%u\n", -12);
+	// printf("%i\n", -12);
+	// ft_printf("%i\n", -12);
+	// printf("%x\n", -12);
+	// ft_printf("%x\n", -12);
+	// printf("%X\n", -12);
+	// ft_printf("%X\n", -12);
+	// printf("%%\n");
+	// ft_printf("%%\n");
+
+	printf("ret: %d\n", printf("Hey %c %s %p %d %i %u %x %X %%\n", 'A', "Good", &a, -12, 42, 50, -12, -12));
+	printf("ret: %d\n", ft_printf("Hey %c %s %p %d %i %u %x %X %%\n", 'A', "Good", &a, -12, 42, 50, -12, -12));
 	return (0);
 }

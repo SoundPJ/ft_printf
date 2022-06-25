@@ -6,7 +6,7 @@
 /*   By: pjerddee <pjerddee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 10:02:43 by pjerddee          #+#    #+#             */
-/*   Updated: 2022/06/25 23:46:13 by pjerddee         ###   ########.fr       */
+/*   Updated: 2022/06/26 00:13:01 by pjerddee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	ft_putchar(char c)
 	return 1;
 }
 
-//For putchar and putstr
+//For putstr
 int	ft_putstr(char *s)
 {
 	int	len = 0;
