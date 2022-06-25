@@ -6,13 +6,12 @@
 /*   By: pjerddee <pjerddee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 01:51:17 by pjerddee          #+#    #+#             */
-/*   Updated: 2022/06/26 02:31:43 by pjerddee         ###   ########.fr       */
+/*   Updated: 2022/06/26 03:23:25 by pjerddee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-// return number of digits of n, ignoring minus sign
 static int	ft_getdigit(long n, int base)
 {
 	int	len;

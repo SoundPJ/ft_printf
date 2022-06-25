@@ -6,14 +6,14 @@
 /*   By: pjerddee <pjerddee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 01:54:17 by pjerddee          #+#    #+#             */
-/*   Updated: 2022/06/26 01:54:33 by pjerddee         ###   ########.fr       */
+/*   Updated: 2022/06/26 03:24:17 by pjerddee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-int	ft_putpercent()
+int	ft_putpercent(void)
 {
 	ft_putstr("%");
-	return 1;
+	return (1);
 }

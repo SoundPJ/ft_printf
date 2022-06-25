@@ -6,7 +6,7 @@
 /*   By: pjerddee <pjerddee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 08:26:54 by pjerddee          #+#    #+#             */
-/*   Updated: 2022/06/26 02:08:56 by pjerddee         ###   ########.fr       */
+/*   Updated: 2022/06/26 03:20:39 by pjerddee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,25 +16,24 @@
 static char	set_flag1(char o_flag1, char n_flag1)
 {
 	if (o_flag1 == '\0')
-		return n_flag1;
+		return (n_flag1);
 	if (o_flag1 == '#' || n_flag1 == '#')
-		return '#';
+		return ('#');
 	else if (o_flag1 == '+' || n_flag1 == '+')
-		return '+';
+		return ('+');
 	else
-		return ' ';
+		return (' ');
 }
-
 
 //Priority - > 0
 static char	set_flag2(char o_flag2, char n_flag2)
 {
 	if (o_flag2 == '\0')
-		return n_flag2;
+		return (n_flag2);
 	if (o_flag2 == '-' || n_flag2 == '-')
-		return '-';
+		return ('-');
 	else
-		return '0';
+		return ('0');
 }
 
 static t_cv	get_spcf(const char **s)
@@ -61,31 +60,28 @@ static t_cv	get_spcf(const char **s)
 		(*s)++;
 	}
 	ret.type = **s;
-	// printf("type = '%c' flag1 = '%c' flag2 = '%c' width = '%d' precision = '%d'\n", ret.type, ret.flag1, ret.flag2, ret.width, ret.precision);
 	return (ret);
 }
 
 // return printed len for a flag that parse in
-static int ft_classify(t_cv spcf, va_list args)
+static int	ft_classify(t_cv spcf, va_list args)
 {
 	if (spcf.type == 'c')
-		return ft_putchar((char)va_arg(args, int));
+		return (ft_putchar((char)va_arg(args, int)));
 	else if (spcf.type == 's')
-		return ft_putstr(va_arg(args, char *));
+		return (ft_putstr(va_arg(args, char *)));
 	else if (spcf.type == 'p')
-		return ft_putp(va_arg(args, size_t));
+		return (ft_putp(va_arg(args, size_t)));
 	else if (spcf.type == 'd' || spcf.type == 'i')
-		return ft_putnbr(va_arg(args, int), 10, LOWER);
+		return (ft_putnbr(va_arg(args, int), 10, LOWER));
 	else if (spcf.type == 'u')
-		return ft_putnbr(va_arg(args, unsigned int), 10, LOWER);
+		return (ft_putnbr(va_arg(args, unsigned int), 10, LOWER));
 	else if (spcf.type == 'x')
-		return ft_putnbr(va_arg(args, unsigned int), 16, LOWER);
+		return (ft_putnbr(va_arg(args, unsigned int), 16, LOWER));
 	else if (spcf.type == 'X')
-		return ft_putnbr(va_arg(args, unsigned int), 16, UPPER);
-	// else if (spcf.type == '%')
-	// 	return ft_putpercent();
+		return (ft_putnbr(va_arg(args, unsigned int), 16, UPPER));
 	else
-		return 0;
+		return (0);
 }
 
 int	ft_printf(const char *placeholders, ...)
@@ -107,94 +103,17 @@ int	ft_printf(const char *placeholders, ...)
 			flag = 0;
 			spcf = get_spcf(&placeholders);
 			if (spcf.type != '%')
-			{
-				// printf("%d", args);
-				// printf("len: %d\n", len);
 				len += ft_classify(spcf, args);
-				// printf("len: %d\n", len);
-			}
 			else if (spcf.type == '%')
-				len += ft_putpercent();;
+				len += ft_putpercent();
 		}
 		else if (flag == 0)
 		{
 			write(1, placeholders, 1);
-			len++;	
+			len++;
 		}
 		placeholders++;
 	}
 	va_end(args);
 	return (len);
 }
-
-// int	main(void)
-// {
-// // 	// get_spcf("+5d");
-// // 	// get_spcf("+-5d");
-// // 	// get_spcf("-+5d");
-// // 	// get_spcf("+0.4d");
-
-// // 	// get_spcf("- 6d");
-// // 	// get_spcf("0 6d");
-// // 	// get_spcf("- 7.4d");
-// // 	// get_spcf("- 5.4d");
-// // 	// get_spcf("0 .5d");
-
-// // 	// get_spcf("#04x");
-// // 	// get_spcf("-#4x");
-// // 	// get_spcf("#2.1x");
-
-// // 	// ft_putchar('c');
-// // 	// ft_putstr("Hello");
-// 	int a = 2;
-// // 	printf("%p\n", &a);
-// // 	// ft_putp((unsigned long)&a);
-
-// 	// printf("Hey\n");
-// 	// ft_printf("Hey\n");
-// 	// printf("%c\n", 'A');
-// 	// ft_printf("%c\n", 'A');
-// 	// printf("%s\n", "Hello");
-// 	// ft_printf("%s\n", "Hello");
-// 	// printf("%p\n", &a);
-// 	// ft_printf("%p\n", &a);
-// 	// printf("%d\n", -12);
-// 	// ft_printf("%d\n", -12);
-// 	// printf("%u\n", -12);
-// 	// ft_printf("%u\n", -12);
-// 	// printf("%i\n", -12);
-// 	// ft_printf("%i\n", -12);
-// 	// printf("%x\n", -12);
-// 	// ft_printf("%x\n", -12);
-// 	// printf("%X\n", -12);
-// 	// ft_printf("%X\n", -12);
-// 	// printf("%%\n");
-// 	// ft_printf("%%\n");
-
-// 	// printf("ret: %d\n", printf("Hey\n"));
-// 	// printf("ret: %d\n", ft_printf("Hey\n"));
-// 	// printf("ret: %d\n", printf("%c\n", 'A'));
-// 	// printf("ret: %d\n", ft_printf("%c\n", 'A'));
-// 	// printf("%s\n", "Hello");
-// 	// ft_printf("%s\n", "Hello");
-// 	// printf("%p\n", &a);
-// 	// ft_printf("%p\n", &a);
-// 	// printf("%d\n", -12);
-// 	// ft_printf("%d\n", -12);
-// 	// printf("%u\n", -12);
-// 	// ft_printf("%u\n", -12);
-// 	// printf("%i\n", -12);
-// 	// ft_printf("%i\n", -12);
-// 	// printf("%x\n", -12);
-// 	// ft_printf("%x\n", -12);
-// 	// printf("%X\n", -12);
-// 	// ft_printf("%X\n", -12);
-// 	// printf("%%\n");
-// 	// ft_printf("%%\n");
-
-// 	// printf("ret: %d\n", printf("Hey %c %s %p %d %i %u %x %X %%\n", 'A', "Good", &a, -12, 42, 50, -12, -12));
-// 	// printf("ret: %d\n", ft_printf("Hey %c %s %p %d %i %u %x %X %%\n", 'A', "Good", &a, -12, 42, 50, -12, -12));
-// 	printf("Expected: %p %p \n", LONG_MIN, LONG_MAX);
-// 	ft_printf("Mine: %p %p \n", LONG_MIN, LONG_MAX);
-// 	return (0);
-// }
