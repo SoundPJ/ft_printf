@@ -6,7 +6,7 @@
 /*   By: pjerddee <pjerddee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 08:31:30 by pjerddee          #+#    #+#             */
-/*   Updated: 2022/06/26 08:01:35 by pjerddee         ###   ########.fr       */
+/*   Updated: 2022/06/26 08:15:33 by pjerddee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,6 @@ int		ft_putstr(char *s);
 int		ft_putp(size_t n);
 int		ft_putnbr(long n, int base, int ul);
 int		ft_putlu(size_t n, int base, int ul);
-int		ft_sharp(t_cv *spcf);
-int		ft_space(t_cv *spcf, long val);
-int		ft_plus(t_cv *spcf, long val);
 int		ft_putpercent(void);
 int		ft_putchar(char c);
 void	t_cv_init(t_cv *spcf);
