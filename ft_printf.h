@@ -6,12 +6,12 @@
 /*   By: pjerddee <pjerddee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 08:31:30 by pjerddee          #+#    #+#             */
-/*   Updated: 2022/06/26 03:24:28 by pjerddee         ###   ########.fr       */
+/*   Updated: 2022/06/26 08:01:35 by pjerddee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
-# define	FT_PRINTF_H
+# define FT_PRINTF_H
 
 # include <stdlib.h>
 # include <stdio.h>
@@ -32,21 +32,21 @@ typedef struct s_cv{
 	char	flag2;
 	int		width;
 	int		precision;
-} t_cv;
+	int		len;
+}	t_cv;
 
-int ft_printf(const char *, ...);
-int	ft_check(char *s, char c);
-int	ft_strlen(char *s);
-int	ft_putstr(char *s);
-int	ft_putp(size_t n);
-int	ft_putnbr(long n, int base, int ul);
-int	ft_putlu(size_t n, int base, int ul);
-int	ft_sharp(t_cv *spcf);
-int ft_space(t_cv *spcf, long val);
-int ft_plus(t_cv *spcf, long val);
-int	ft_putpercent(void);
-int	ft_putchar(char c);
+int		ft_printf(const char *placeholders, ...);
+int		ft_check(char *s, char c);
+int		ft_strlen(char *s);
+int		ft_putstr(char *s);
+int		ft_putp(size_t n);
+int		ft_putnbr(long n, int base, int ul);
+int		ft_putlu(size_t n, int base, int ul);
+int		ft_sharp(t_cv *spcf);
+int		ft_space(t_cv *spcf, long val);
+int		ft_plus(t_cv *spcf, long val);
+int		ft_putpercent(void);
+int		ft_putchar(char c);
 void	t_cv_init(t_cv *spcf);
-// t_cv	get_spcf(char *s);
 
 #endif
