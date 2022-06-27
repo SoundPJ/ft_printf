@@ -6,7 +6,7 @@
 /*   By: pjerddee <pjerddee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 15:44:27 by pjerddee          #+#    #+#             */
-/*   Updated: 2022/06/26 07:57:39 by pjerddee         ###   ########.fr       */
+/*   Updated: 2022/06/27 08:53:01 by pjerddee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,3 +47,5 @@ void	t_cv_init(t_cv *spcf)
 	spcf->width = 0;
 	spcf->precision = 0;
 }
+
+

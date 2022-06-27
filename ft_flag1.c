@@ -6,7 +6,7 @@
 /*   By: pjerddee <pjerddee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 23:38:24 by pjerddee          #+#    #+#             */
-/*   Updated: 2022/06/26 08:22:33 by pjerddee         ###   ########.fr       */
+/*   Updated: 2022/06/27 08:25:53 by pjerddee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static int	ft_plus(t_cv *spcf, long val)
 		return (0);
 }
 
-int	ft_flag1()
+int	ft_flag1(t_cv *spcf, long val)
 {
 	char	*tplus;
 	char	*tspace;
@@ -48,9 +48,9 @@ int	ft_flag1()
 	tspace = "dixX";
 	tsharp = "xX";
 	if (spcf->flag1 == '+' && ft_check(tplus, spcf->type))
-		ft_plus(spcf,);
-	else if (spcf->flag1 == ' ' && ft_check(tspace, spcf->type))
-		ft_space();
+		return (ft_plus(spcf, val));
+	else if ((spcf->flag1 == ' ' || spcf->flag1 == '\0')&& ft_check(tspace, spcf->type))
+		return (ft_space(spcf, val));
 	else if (spcf->flag1 == '#' && ft_check(tsharp, spcf->type))
-		ft_sharp();
+		return (ft_sharp(spcf));
 }

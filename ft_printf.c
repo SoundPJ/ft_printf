@@ -6,7 +6,7 @@
 /*   By: pjerddee <pjerddee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 08:26:54 by pjerddee          #+#    #+#             */
-/*   Updated: 2022/06/26 07:57:29 by pjerddee         ###   ########.fr       */
+/*   Updated: 2022/06/27 08:57:59 by pjerddee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ static void	get_spcf(const char **s, t_cv *ret)
 // return printed len for a flag that parse in
 static int	ft_classify(t_cv *spcf, va_list args)
 {
+	
 	if (spcf->type == 'c')
 		return (ft_putchar((char)va_arg(args, int)));
 	else if (spcf->type == 's')
@@ -110,3 +111,8 @@ int	ft_printf(const char *placeholders, ...)
 	va_end(args);
 	return (spcf.len);
 }
+
+// int	main(void)
+// {
+// 	return (0);
+// }

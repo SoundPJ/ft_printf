@@ -6,14 +6,15 @@
 #    By: pjerddee <pjerddee@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/01 23:56:26 by pjerddee          #+#    #+#              #
-#    Updated: 2022/06/26 02:23:21 by pjerddee         ###   ########.fr        #
+#    Updated: 2022/06/27 08:58:39 by pjerddee         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 
+# ./ft_put/ft_putlu.c
+
 SRCS =	./ft_put/ft_putchar.c	\
-		./ft_put/ft_putlu.c	\
 		./ft_put/ft_putnbr.c	\
 		./ft_put/ft_putp.c	\
 		./ft_put/ft_putpercent.c	\
