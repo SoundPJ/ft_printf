@@ -6,7 +6,7 @@
 /*   By: pjerddee <pjerddee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 08:31:30 by pjerddee          #+#    #+#             */
-/*   Updated: 2022/06/27 09:02:28 by pjerddee         ###   ########.fr       */
+/*   Updated: 2022/06/27 09:20:57 by pjerddee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct s_cv{
 	int		width;
 	int		precision;
 	int		len;
+	int		ori_len;
 }	t_cv;
 
 int		ft_printf(const char *placeholders, ...);
@@ -43,6 +44,7 @@ int		ft_putp(size_t n);
 int		ft_putnbr(long n, int base, int ul);
 int		ft_putpercent(void);
 int		ft_putchar(char c);
+int		ft_getlen(long n, int base);
 void	t_cv_init(t_cv *spcf);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: pjerddee <pjerddee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 08:26:54 by pjerddee          #+#    #+#             */
-/*   Updated: 2022/06/27 08:57:59 by pjerddee         ###   ########.fr       */
+/*   Updated: 2022/06/27 09:25:19 by pjerddee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,9 @@ int	ft_printf(const char *placeholders, ...)
 	return (spcf.len);
 }
 
-// int	main(void)
-// {
-// 	return (0);
-// }
+int	main(void)
+{
+	printf("% d\n", 2);
+	printf("% d\n", -2);
+	return (0);
+}

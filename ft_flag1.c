@@ -6,7 +6,7 @@
 /*   By: pjerddee <pjerddee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 23:38:24 by pjerddee          #+#    #+#             */
-/*   Updated: 2022/06/27 08:25:53 by pjerddee         ###   ########.fr       */
+/*   Updated: 2022/06/27 09:31:46 by pjerddee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,10 @@ static int	ft_space(t_cv *spcf, long val)
 static int	ft_plus(t_cv *spcf, long val)
 {
 	if (val >= 0)
+	{
+		spcf-> = 
 		return (ft_putstr("+"));
+	}
 	else
 		return (0);
 }

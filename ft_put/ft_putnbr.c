@@ -6,26 +6,11 @@
 /*   By: pjerddee <pjerddee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 01:51:17 by pjerddee          #+#    #+#             */
-/*   Updated: 2022/06/26 03:23:25 by pjerddee         ###   ########.fr       */
+/*   Updated: 2022/06/27 09:12:24 by pjerddee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
-
-static int	ft_getdigit(long n, int base)
-{
-	int	len;
-
-	len = 0;
-	if (n == 0)
-		return (1);
-	while (n != 0)
-	{
-		n /= base;
-		len++;
-	}
-	return (len);
-}
 
 int	ft_putnbr(long n, int base, int ul)
 {
@@ -34,7 +19,7 @@ int	ft_putnbr(long n, int base, int ul)
 	int		len;
 
 	tmp = n;
-	len = ft_getdigit(tmp, base);
+	len = ft_getlen(tmp, base);
 	num[LOWER] = "0123456789abcdef";
 	num[UPPER] = "0123456789ABCDEF";
 	if (n < 0)

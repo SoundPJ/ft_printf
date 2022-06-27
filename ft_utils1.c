@@ -6,7 +6,7 @@
 /*   By: pjerddee <pjerddee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 15:44:27 by pjerddee          #+#    #+#             */
-/*   Updated: 2022/06/27 08:53:01 by pjerddee         ###   ########.fr       */
+/*   Updated: 2022/06/27 09:10:26 by pjerddee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,21 @@ void	t_cv_init(t_cv *spcf)
 	spcf->flag2 = '\0';
 	spcf->width = 0;
 	spcf->precision = 0;
+}
+
+int	ft_getlen(long n, int base)
+{
+	int	len;
+
+	len = 0;
+	if (n == 0)
+		return (1);
+	while (n != 0)
+	{
+		n /= base;
+		len++;
+	}
+	return (len);
 }
 
 
