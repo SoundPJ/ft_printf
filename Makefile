@@ -6,7 +6,7 @@
 #    By: pjerddee <pjerddee@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/01 23:56:26 by pjerddee          #+#    #+#              #
-#    Updated: 2022/06/27 08:58:39 by pjerddee         ###   ########.fr        #
+#    Updated: 2022/07/03 03:43:36 by pjerddee         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,6 @@ SRCS =	./ft_put/ft_putchar.c	\
 		./ft_put/ft_putpercent.c	\
 		./ft_put/ft_putstr.c	\
 		ft_utils1.c			\
-		ft_flag1.c			\
 		ft_printf.c			
 
 # CFLAGS = -Wall -Werror -Wextra

@@ -6,7 +6,7 @@
 /*   By: pjerddee <pjerddee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 15:44:27 by pjerddee          #+#    #+#             */
-/*   Updated: 2022/07/02 16:10:14 by pjerddee         ###   ########.fr       */
+/*   Updated: 2022/07/03 05:59:24 by pjerddee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ int	ft_strlen(char *s)
 	int	len;
 
 	len = 0;
+	if (!s)
+		return (6);
 	while (s[len] != '\0')
 		len++;
 	return (len);
@@ -45,14 +47,17 @@ void	t_cv_init(t_cv *spcf)
 	spcf->flag1 = '\0';
 	spcf->flag2 = '\0';
 	spcf->width = 0;
-	spcf->precision = 0;
+	spcf->precision = -1;
 }
 
 int	ft_getlen(long n, int base)
 {
 	int	len;
 
-	len = 0;
+	if (n < 0)
+		len = 1;
+	else
+		len = 0;
 	if (n == 0)
 		return (1);
 	while (n != 0)
@@ -61,4 +66,29 @@ int	ft_getlen(long n, int base)
 		len++;
 	}
 	return (len);
+}
+
+// return minimum, but if the minimum is negative return the other one
+int	ft_min(int a, int b)
+{
+	if ((a > 0 && b > 0) || (a < 0 && b < 0))
+	{
+		if (a < b)
+			return (a);
+		else
+			return (b);
+	}
+	else if (a < 0 && b > 0)
+		return (b);
+	else
+		return (a);
+}
+
+// return maximum
+int	ft_max(int a, int b)
+{
+	if (a > b)
+		return (a);
+	else
+		return (b);
 }

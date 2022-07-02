@@ -6,7 +6,7 @@
 /*   By: pjerddee <pjerddee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 08:26:54 by pjerddee          #+#    #+#             */
-/*   Updated: 2022/07/02 16:37:53 by pjerddee         ###   ########.fr       */
+/*   Updated: 2022/07/03 05:59:35 by pjerddee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,14 +55,18 @@ static void	get_spcf(const char **s, t_cv *ret)
 		else if (ft_check(DIGIT, **s) && dot == 0)
 			ret->width = (ret->width * 10) + (**s - '0');
 		else if (ft_check(DIGIT, **s))
+		{
+			if (ret->precision < 0)
+				ret->precision = 0;
 			ret->precision = (ret->precision * 10) + (**s - '0');
+		}
 		(*s)++;
 	}
 	ret->type = **s;
 }
 
 // return printed len for a flag that parse in
-static int	ft_classify(t_cv *spcf, va_list args)
+static void	ft_classify(t_cv *spcf, va_list args)
 {
 	if (spcf->type == 'c')
 		ft_putchar(spcf, (char)va_arg(args, int));
@@ -80,8 +84,6 @@ static int	ft_classify(t_cv *spcf, va_list args)
 		ft_putnbr(spcf, va_arg(args, unsigned int), 16, UPPER);
 	else if (spcf->type == '%')
 		ft_putstr(spcf, "%");
-	else
-		return (0);
 }
 
 int	ft_printf(const char *placeholders, ...)
@@ -113,8 +115,13 @@ int	ft_printf(const char *placeholders, ...)
 
 int	main(void)
 {
-	int a = 2;
-	printf("ret: %d\n", printf("|%+6d|\n", 123));
-	printf("ret: %d\n", ft_printf("|%+2d|\n", 123));
+	int	T = 1;
+	printf("ret: %d\n", printf("|%.6d|\n", 1000));
+	printf("ret: %d\n", ft_printf("|%.6d|\n", 1000));
+	// printf("ret: %d\n", ft_printf("|%1.5d|\n", 1000));
+	// printf("ret: %d\n", ft_printf("|%05d|\n", -1));
+	// printf("ret: %d\n", printf("|%01d|\n", 1));
+	// printf("ret: %d\n", ft_printf("|% 10d|\n", 123));
+	// printf("ret: %d\n", ft_printf("|%+2d|\n", 123));
 	return (0);
 }
