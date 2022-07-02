@@ -6,14 +6,13 @@
 /*   By: pjerddee <pjerddee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 01:54:17 by pjerddee          #+#    #+#             */
-/*   Updated: 2022/06/26 03:24:17 by pjerddee         ###   ########.fr       */
+/*   Updated: 2022/07/02 15:24:16 by pjerddee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-int	ft_putpercent(void)
-{
-	ft_putstr("%");
-	return (1);
-}
+// void	ft_putpercent(t_cv *spcf)
+// {
+
+// }

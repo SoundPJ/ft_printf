@@ -6,7 +6,7 @@
 /*   By: pjerddee <pjerddee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 01:48:55 by pjerddee          #+#    #+#             */
-/*   Updated: 2022/06/27 09:06:45 by pjerddee         ###   ########.fr       */
+/*   Updated: 2022/07/02 15:24:56 by pjerddee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,9 @@ static int	ft_putlu(size_t n, int base)
 	return (len);
 }
 
-int	ft_putp(size_t n)
+void	ft_putp(t_cv *spcf, size_t n)
 {
-	int	len;
-
-	len = 0;
-	ft_putstr("0x");
-	len = 2 + ft_putlu(n, 16);
-	return (len);
+	ft_putstr(spcf, "0x");
+	spcf->len += ft_putlu(n, 16);
+	// return (len);
 }

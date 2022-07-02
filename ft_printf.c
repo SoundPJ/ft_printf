@@ -6,7 +6,7 @@
 /*   By: pjerddee <pjerddee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 08:26:54 by pjerddee          #+#    #+#             */
-/*   Updated: 2022/06/27 09:25:19 by pjerddee         ###   ########.fr       */
+/*   Updated: 2022/07/02 15:37:06 by pjerddee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,23 +64,23 @@ static void	get_spcf(const char **s, t_cv *ret)
 // return printed len for a flag that parse in
 static int	ft_classify(t_cv *spcf, va_list args)
 {
-	
+
 	if (spcf->type == 'c')
-		return (ft_putchar((char)va_arg(args, int)));
+		ft_putchar(spcf, (char)va_arg(args, int));
 	else if (spcf->type == 's')
-		return (ft_putstr(va_arg(args, char *)));
+		ft_putstr(spcf, va_arg(args, char *));
 	else if (spcf->type == 'p')
-		return (ft_putp(va_arg(args, size_t)));
+		ft_putp(spcf, va_arg(args, size_t));
 	else if (spcf->type == 'd' || spcf->type == 'i')
-		return (ft_putnbr(va_arg(args, int), 10, LOWER));
+		ft_putnbr(spcf,va_arg(args, int), 10, LOWER);
 	else if (spcf->type == 'u')
-		return (ft_putnbr(va_arg(args, unsigned int), 10, LOWER));
+		ft_putnbr(spcf,va_arg(args, unsigned int), 10, LOWER);
 	else if (spcf->type == 'x')
-		return (ft_putnbr(va_arg(args, unsigned int), 16, LOWER));
+		ft_putnbr(spcf,va_arg(args, unsigned int), 16, LOWER);
 	else if (spcf->type == 'X')
-		return (ft_putnbr(va_arg(args, unsigned int), 16, UPPER));
+		ft_putnbr(spcf,va_arg(args, unsigned int), 16, UPPER);
 	else if (spcf->type == '%')
-		return (ft_putpercent());
+		ft_putstr(spcf, "%");
 	else
 		return (0);
 }
@@ -102,7 +102,7 @@ int	ft_printf(const char *placeholders, ...)
 		{
 			flag = 0;
 			get_spcf(&placeholders, &spcf);
-			spcf.len += ft_classify(&spcf, args);
+			ft_classify(&spcf, args);
 		}
 		else if (flag == 0)
 			spcf.len += write(1, placeholders, 1);
@@ -114,7 +114,8 @@ int	ft_printf(const char *placeholders, ...)
 
 int	main(void)
 {
-	printf("% d\n", 2);
-	printf("% d\n", -2);
+	int a = 2;
+	printf("ret: %d\n", printf("|%s %c %p %% %d|\n", "Hello", 'a', (void*)0, 123));
+	printf("ret: %d\n", ft_printf("|%s %c %p %% %d|\n", "Hello", 'a', (void*)0, 123));
 	return (0);
 }

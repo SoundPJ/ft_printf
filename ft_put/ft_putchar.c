@@ -6,14 +6,14 @@
 /*   By: pjerddee <pjerddee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 01:47:36 by pjerddee          #+#    #+#             */
-/*   Updated: 2022/06/26 03:22:58 by pjerddee         ###   ########.fr       */
+/*   Updated: 2022/07/02 12:21:08 by pjerddee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-int	ft_putchar(char c)
+void	ft_putchar(t_cv *spcf, char c)
 {
-	write(1, &c, 1);
-	return (1);
+	spcf->len += write(1, &c, 1);
+	// return (1);
 }

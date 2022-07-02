@@ -6,26 +6,23 @@
 /*   By: pjerddee <pjerddee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 01:48:11 by pjerddee          #+#    #+#             */
-/*   Updated: 2022/06/26 03:25:06 by pjerddee         ###   ########.fr       */
+/*   Updated: 2022/07/02 12:31:46 by pjerddee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-int	ft_putstr(char *s)
+void	ft_putstr(t_cv *spcf, char *s)
 {
-	int	len;
-
-	len = 0;
 	if (!s)
 	{
 		write(1, "(null)", 6);
-		return (6);
+		spcf->len += 6;
+		return ;
 	}
-	while (s[len] != '\0')
+	while (*s != '\0')
 	{
-		write(1, s + len, 1);
-		len++;
+		write(1, s++, 1);
+		spcf->len += 1;
 	}
-	return (len);
 }
