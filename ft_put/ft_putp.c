@@ -6,7 +6,7 @@
 /*   By: pjerddee <pjerddee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 01:48:55 by pjerddee          #+#    #+#             */
-/*   Updated: 2022/07/02 15:24:56 by pjerddee         ###   ########.fr       */
+/*   Updated: 2022/07/02 16:01:35 by pjerddee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,4 @@ void	ft_putp(t_cv *spcf, size_t n)
 {
 	ft_putstr(spcf, "0x");
 	spcf->len += ft_putlu(n, 16);
-	// return (len);
 }

@@ -6,7 +6,7 @@
 /*   By: pjerddee <pjerddee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 15:44:27 by pjerddee          #+#    #+#             */
-/*   Updated: 2022/06/27 09:10:26 by pjerddee         ###   ########.fr       */
+/*   Updated: 2022/07/02 16:10:14 by pjerddee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,3 @@ int	ft_getlen(long n, int base)
 	}
 	return (len);
 }
-
-

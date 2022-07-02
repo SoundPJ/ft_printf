@@ -6,7 +6,7 @@
 /*   By: pjerddee <pjerddee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 08:31:30 by pjerddee          #+#    #+#             */
-/*   Updated: 2022/07/02 15:25:54 by pjerddee         ###   ########.fr       */
+/*   Updated: 2022/07/02 16:09:01 by pjerddee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ typedef struct s_cv{
 	int		width;
 	int		precision;
 	int		len;
-	// int		ori_len;
 }	t_cv;
 
 int		ft_printf(const char *placeholders, ...);

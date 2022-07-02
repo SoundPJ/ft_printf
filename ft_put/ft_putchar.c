@@ -6,7 +6,7 @@
 /*   By: pjerddee <pjerddee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 01:47:36 by pjerddee          #+#    #+#             */
-/*   Updated: 2022/07/02 12:21:08 by pjerddee         ###   ########.fr       */
+/*   Updated: 2022/07/02 16:03:00 by pjerddee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,4 @@
 void	ft_putchar(t_cv *spcf, char c)
 {
 	spcf->len += write(1, &c, 1);
-	// return (1);
 }

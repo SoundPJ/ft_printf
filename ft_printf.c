@@ -6,7 +6,7 @@
 /*   By: pjerddee <pjerddee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 08:26:54 by pjerddee          #+#    #+#             */
-/*   Updated: 2022/07/02 15:37:06 by pjerddee         ###   ########.fr       */
+/*   Updated: 2022/07/02 16:37:53 by pjerddee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ static void	get_spcf(const char **s, t_cv *ret)
 // return printed len for a flag that parse in
 static int	ft_classify(t_cv *spcf, va_list args)
 {
-
 	if (spcf->type == 'c')
 		ft_putchar(spcf, (char)va_arg(args, int));
 	else if (spcf->type == 's')
@@ -72,13 +71,13 @@ static int	ft_classify(t_cv *spcf, va_list args)
 	else if (spcf->type == 'p')
 		ft_putp(spcf, va_arg(args, size_t));
 	else if (spcf->type == 'd' || spcf->type == 'i')
-		ft_putnbr(spcf,va_arg(args, int), 10, LOWER);
+		ft_putnbr(spcf, va_arg(args, int), 10, LOWER);
 	else if (spcf->type == 'u')
-		ft_putnbr(spcf,va_arg(args, unsigned int), 10, LOWER);
+		ft_putnbr(spcf, va_arg(args, unsigned int), 10, LOWER);
 	else if (spcf->type == 'x')
-		ft_putnbr(spcf,va_arg(args, unsigned int), 16, LOWER);
+		ft_putnbr(spcf, va_arg(args, unsigned int), 16, LOWER);
 	else if (spcf->type == 'X')
-		ft_putnbr(spcf,va_arg(args, unsigned int), 16, UPPER);
+		ft_putnbr(spcf, va_arg(args, unsigned int), 16, UPPER);
 	else if (spcf->type == '%')
 		ft_putstr(spcf, "%");
 	else
@@ -115,7 +114,7 @@ int	ft_printf(const char *placeholders, ...)
 int	main(void)
 {
 	int a = 2;
-	printf("ret: %d\n", printf("|%s %c %p %% %d|\n", "Hello", 'a', (void*)0, 123));
-	printf("ret: %d\n", ft_printf("|%s %c %p %% %d|\n", "Hello", 'a', (void*)0, 123));
+	printf("ret: %d\n", printf("|%+6d|\n", 123));
+	printf("ret: %d\n", ft_printf("|%+2d|\n", 123));
 	return (0);
 }
