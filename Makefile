@@ -6,13 +6,11 @@
 #    By: pjerddee <pjerddee@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/01 23:56:26 by pjerddee          #+#    #+#              #
-#    Updated: 2022/07/03 03:43:36 by pjerddee         ###   ########.fr        #
+#    Updated: 2022/07/04 03:58:00 by pjerddee         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
-
-# ./ft_put/ft_putlu.c
 
 SRCS =	./ft_put/ft_putchar.c	\
 		./ft_put/ft_putnbr.c	\
@@ -20,18 +18,22 @@ SRCS =	./ft_put/ft_putchar.c	\
 		./ft_put/ft_putpercent.c	\
 		./ft_put/ft_putstr.c	\
 		ft_utils1.c			\
-		ft_printf.c			
+		ft_printf.c
 
-# CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra
 
 OBJS = $(SRCS:%.c=%.o)
 
 $(NAME): $(OBJS)
-	# @gcc -c $(CFLAGS) $(SRCS)
+	@gcc -c $(CFLAGS) $(SRCS)
 	@gcc -c $(SRCS)
 	@ar -rcs $(NAME) $(OBJS)
 
 all: $(NAME)
+
+norm:
+	@norminette -R CheckForbiddenSourceHeader $(SRCS)
+	@norminette -R CheckDefine ft_printf.h
 
 clean:
 	@rm -f *.o
@@ -44,4 +46,4 @@ re: fclean all
 
 bonus: $(NAME)
 
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re bonus norm

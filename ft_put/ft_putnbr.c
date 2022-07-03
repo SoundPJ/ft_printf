@@ -6,51 +6,11 @@
 /*   By: pjerddee <pjerddee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 01:51:17 by pjerddee          #+#    #+#             */
-/*   Updated: 2022/07/03 18:33:19 by pjerddee         ###   ########.fr       */
+/*   Updated: 2022/07/04 04:00:20 by pjerddee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
-
-static void	ft_putn(t_cv *spcf, long n, int base, int ul)
-{
-	char	*num[2];
-	long	tmp;
-
-	tmp = n;
-	num[LOWER] = "0123456789abcdef";
-	num[UPPER] = "0123456789ABCDEF";
-	if (n < 0)
-	{
-		spcf->len += write (1, "-", 1);
-		n = n * -1;
-	}
-	if (n < base)
-		spcf->len += write(1, num[ul] + (n % base), 1);
-	else
-	{
-		ft_putn(spcf, n / base, base, ul);
-		spcf->len += write(1, num[ul] + (n % base), 1);
-	}
-}
-
-static void	ft_width(t_cv *spcf, long n, int base, int n_zero)
-{
-	int	l;
-	
-	l = ft_getlen(n, base) + n_zero;
-	printf("w = %d\tl = %d\tn_zero = %d\n", spcf->width, l, n_zero);
-	if ((spcf->flag1 != '\0' && n >= 0 && spcf->type != 'u') || n < 0)
-		l++;
-	while (spcf->width-- > l)
-	{
-		if (spcf->flag2 == '0')
-			spcf->len += write(1, "0", 1);
-		else
-			spcf->len += write(1, " ", 1);
-	}
-	spcf->width = 0;
-}
 
 static void	ft_flag1(t_cv *spcf, long n, int base, int ul)
 {
@@ -64,36 +24,71 @@ static void	ft_flag1(t_cv *spcf, long n, int base, int ul)
 		spcf->len += write(1, "0X", 2);
 	if (n == 0 && spcf->precision == 0)
 		return ;
-	ft_putn(spcf, n, base, ul);
+	if (!(spcf->precision >= 0 && n == 0))
+		ft_putn(spcf, n, base, ul);
+}
+
+static int	ft_precision(t_cv *spcf, long n, int base)
+{
+	int	pad0;
+
+	if (spcf->precision >= 0 && spcf->precision >= ft_getlen(n, base, spcf))
+	{
+		pad0 = spcf->precision - ft_getlen(n, base, spcf);
+		if (n < 0 && spcf->precision >= 0)
+			pad0++;
+	}
+	else
+		pad0 = 0;
+	return (pad0);
+}
+
+static void	ft_width(t_cv *spcf, long n, int base, int pad0)
+{
+	while (spcf->width-- > pad0 + ft_getlen(n, base, spcf))
+	{
+		if (spcf->flag2 == '0' && spcf->precision < 0)
+			spcf->len += write(1, "0", 1);
+		else
+			spcf->len += write(1, " ", 1);
+	}
+}
+
+static void	ft_minus(t_cv *spcf, long n, int base, int ul)
+{
+	int	pad0;
+	int	i;
+
+	pad0 = ft_precision(spcf, n, base);
+	i = 0;
+	if (spcf->flag2 == '-')
+	{
+		while (i++ < pad0)
+			spcf->len += write(1, "0", 1);
+		ft_flag1(spcf, n, base, ul);
+		ft_width(spcf, n, base, pad0);
+	}
+	else
+	{
+		ft_width(spcf, n, base, pad0);
+		if (n < 0 && spcf->flag2 == '0' && spcf->precision >= 0)
+		{
+			spcf->len += write (1, "-", 1);
+			n *= -1;
+		}
+		while (i++ < pad0)
+			spcf->len += write(1, "0", 1);
+		ft_flag1(spcf, n, base, ul);
+	}
 }
 
 void	ft_putnbr(t_cv *spcf, long n, int base, int ul)
 {
-	int	n_zero;
-
-	n_zero = spcf->precision - ft_getlen(n, base);
-	if (n_zero < 0)
-		n_zero = 0;
-	if (n < 0 && (spcf->flag2 == '0' || spcf->precision >= 0))
+	if (n < 0 && ((spcf->flag2 == '0') != (spcf->precision >= 0)))
 	{
 		n *= -1;
 		spcf->len += write(1, "-", 1);
 		spcf->width--;
 	}
-	if (spcf->flag2 == '-')
-	{
-		while (n_zero-- > 0)
-			spcf->len += write(1, "0", 1);
-		ft_flag1(spcf, n, base, ul);
-		ft_width(spcf, n, base, n_zero);
-		return ;
-	}
-	else
-	{
-		ft_width(spcf, n, base, n_zero);
-		while (n_zero-- > 0)
-			spcf->len += write(1, "0", 1);
-		ft_flag1(spcf, n, base, ul);
-		return ;
-	}
+	ft_minus(spcf, n, base, ul);
 }

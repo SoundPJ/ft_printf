@@ -6,7 +6,7 @@
 /*   By: pjerddee <pjerddee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 15:44:27 by pjerddee          #+#    #+#             */
-/*   Updated: 2022/07/03 18:22:16 by pjerddee         ###   ########.fr       */
+/*   Updated: 2022/07/04 03:51:30 by pjerddee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,15 @@ void	t_cv_init(t_cv *spcf)
 	spcf->precision = -1;
 }
 
-int	ft_getlen(long n, int base)
+int	ft_getlen(long n, int base, t_cv *spcf)
 {
 	int	len;
 
 	len = 0;
-	if (n == 0)
+	if (n == 0 && spcf->precision < 0)
 		return (1);
+	if (n < 0)
+		len++;
 	while (n != 0)
 	{
 		n /= base;
@@ -65,18 +67,24 @@ int	ft_getlen(long n, int base)
 	return (len);
 }
 
-// return minimum, but if the minimum is negative return the other one
-int	ft_min(int a, int b)
+void	ft_putn(t_cv *spcf, long n, int base, int ul)
 {
-	if ((a >= 0 && b >= 0) || (a < 0 && b < 0))
+	char	*num[2];
+	long	tmp;
+
+	tmp = n;
+	num[LOWER] = "0123456789abcdef";
+	num[UPPER] = "0123456789ABCDEF";
+	if (n < 0)
 	{
-		if (a < b)
-			return (a);
-		else
-			return (b);
+		spcf->len += write (1, "-", 1);
+		n = n * -1;
 	}
-	else if (a < 0 && b >= 0)
-		return (b);
+	if (n < base)
+		spcf->len += write(1, num[ul] + (n % base), 1);
 	else
-		return (a);
+	{
+		ft_putn(spcf, n / base, base, ul);
+		spcf->len += write(1, num[ul] + (n % base), 1);
+	}
 }

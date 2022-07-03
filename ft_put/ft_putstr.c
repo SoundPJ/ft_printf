@@ -6,11 +6,27 @@
 /*   By: pjerddee <pjerddee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 01:48:11 by pjerddee          #+#    #+#             */
-/*   Updated: 2022/07/03 16:50:28 by pjerddee         ###   ########.fr       */
+/*   Updated: 2022/07/04 03:47:44 by pjerddee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
+
+// return minimum, but if the minimum is negative return the other one
+static int	ft_min(int a, int b)
+{
+	if ((a >= 0 && b >= 0) || (a < 0 && b < 0))
+	{
+		if (a < b)
+			return (a);
+		else
+			return (b);
+	}
+	else if (a < 0 && b >= 0)
+		return (b);
+	else
+		return (a);
+}
 
 static void	ft_width(t_cv *spcf, char *s)
 {
