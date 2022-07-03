@@ -6,7 +6,7 @@
 /*   By: pjerddee <pjerddee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 15:44:27 by pjerddee          #+#    #+#             */
-/*   Updated: 2022/07/03 16:34:21 by pjerddee         ###   ########.fr       */
+/*   Updated: 2022/07/03 18:22:16 by pjerddee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,7 @@ int	ft_getlen(long n, int base)
 {
 	int	len;
 
-	if (n < 0)
-		len = 1;
-	else
-		len = 0;
+	len = 0;
 	if (n == 0)
 		return (1);
 	while (n != 0)

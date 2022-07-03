@@ -6,10 +6,9 @@
 /*   By: pjerddee <pjerddee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 09:21:23 by pjerddee          #+#    #+#             */
-/*   Updated: 2022/07/03 02:04:48 by pjerddee         ###   ########.fr       */
+/*   Updated: 2022/07/03 17:36:55 by pjerddee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-// int	ft_getlen()

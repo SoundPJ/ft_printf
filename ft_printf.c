@@ -6,7 +6,7 @@
 /*   By: pjerddee <pjerddee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 08:26:54 by pjerddee          #+#    #+#             */
-/*   Updated: 2022/07/03 17:19:15 by pjerddee         ###   ########.fr       */
+/*   Updated: 2022/07/03 18:25:47 by pjerddee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ int	ft_printf(const char *placeholders, ...)
 		{
 			flag = 0;
 			get_spcf(&placeholders, &spcf);
+			// printf("width = %d\tprecision = %d\n", spcf.width, spcf.precision);
 			ft_classify(&spcf, args);
 		}
 		else if (flag == 0)
@@ -116,12 +117,8 @@ int	main(void)
 {
 	int	T = 1;
 
-	printf("ret: %d\n", printf("|%-.3d|\n", 10));
-	printf("ret: %d\n", ft_printf("|%-.3d|\n", 10));
-	// printf("ret: %d\n", ft_printf("|%1.5d|\n", 1000));
-	// printf("ret: %d\n", ft_printf("|%05d|\n", -1));
-	// printf("ret: %d\n", printf("|%01d|\n", 1));
-	// printf("ret: %d\n", ft_printf("|% 10d|\n", 123));
-	// printf("ret: %d\n", ft_printf("|%+2d|\n", 123));
+	printf("ret: %d\n", printf("|%-1d|\n", 0));
+	printf("ret: %d\n", ft_printf("|%-1d|\n", 0));
+	// printf("len = %d\n", ft_getlen(-2147483648, 10));
 	return (0);
 }

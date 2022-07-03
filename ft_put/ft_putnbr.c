@@ -6,7 +6,7 @@
 /*   By: pjerddee <pjerddee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 01:51:17 by pjerddee          #+#    #+#             */
-/*   Updated: 2022/07/03 17:18:00 by pjerddee         ###   ########.fr       */
+/*   Updated: 2022/07/03 18:33:19 by pjerddee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ static void	ft_width(t_cv *spcf, long n, int base, int n_zero)
 	int	l;
 	
 	l = ft_getlen(n, base) + n_zero;
-	if (spcf->flag1 != '\0' && n >= 0 && spcf->type != 'u')
+	printf("w = %d\tl = %d\tn_zero = %d\n", spcf->width, l, n_zero);
+	if ((spcf->flag1 != '\0' && n >= 0 && spcf->type != 'u') || n < 0)
 		l++;
 	while (spcf->width-- > l)
 	{
@@ -48,8 +49,6 @@ static void	ft_width(t_cv *spcf, long n, int base, int n_zero)
 		else
 			spcf->len += write(1, " ", 1);
 	}
-	while (n_zero-- > 0)
-		spcf->len += write(1, "0", 1);
 	spcf->width = 0;
 }
 
@@ -83,6 +82,8 @@ void	ft_putnbr(t_cv *spcf, long n, int base, int ul)
 	}
 	if (spcf->flag2 == '-')
 	{
+		while (n_zero-- > 0)
+			spcf->len += write(1, "0", 1);
 		ft_flag1(spcf, n, base, ul);
 		ft_width(spcf, n, base, n_zero);
 		return ;
@@ -90,6 +91,8 @@ void	ft_putnbr(t_cv *spcf, long n, int base, int ul)
 	else
 	{
 		ft_width(spcf, n, base, n_zero);
+		while (n_zero-- > 0)
+			spcf->len += write(1, "0", 1);
 		ft_flag1(spcf, n, base, ul);
 		return ;
 	}
