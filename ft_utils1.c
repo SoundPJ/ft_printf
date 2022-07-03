@@ -6,7 +6,7 @@
 /*   By: pjerddee <pjerddee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 15:44:27 by pjerddee          #+#    #+#             */
-/*   Updated: 2022/07/03 05:59:24 by pjerddee         ###   ########.fr       */
+/*   Updated: 2022/07/03 16:34:21 by pjerddee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,24 +71,15 @@ int	ft_getlen(long n, int base)
 // return minimum, but if the minimum is negative return the other one
 int	ft_min(int a, int b)
 {
-	if ((a > 0 && b > 0) || (a < 0 && b < 0))
+	if ((a >= 0 && b >= 0) || (a < 0 && b < 0))
 	{
 		if (a < b)
 			return (a);
 		else
 			return (b);
 	}
-	else if (a < 0 && b > 0)
+	else if (a < 0 && b >= 0)
 		return (b);
 	else
 		return (a);
-}
-
-// return maximum
-int	ft_max(int a, int b)
-{
-	if (a > b)
-		return (a);
-	else
-		return (b);
 }

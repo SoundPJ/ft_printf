@@ -6,13 +6,13 @@
 /*   By: pjerddee <pjerddee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 01:48:11 by pjerddee          #+#    #+#             */
-/*   Updated: 2022/07/03 05:20:07 by pjerddee         ###   ########.fr       */
+/*   Updated: 2022/07/03 16:50:28 by pjerddee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-static void ft_width(t_cv *spcf, char *s)
+static void	ft_width(t_cv *spcf, char *s)
 {
 	int	l;
 
@@ -22,20 +22,38 @@ static void ft_width(t_cv *spcf, char *s)
 	spcf->width = 0;
 }
 
-void	ft_putstr(t_cv *spcf, char *s)
+static void	ft_puts(t_cv *spcf, char *s)
 {
-	ft_width(spcf, s);
+	int	pcs;
+
+	pcs = spcf->precision;
 	if (!s)
 	{
-		write(1, "(null)", 6);
-		spcf->len += 6;
+		s = "(null)";
+		ft_putstr(spcf, s);
 		return ;
 	}
-	while (*s != '\0' && spcf->precision)
+	while (*s != '\0' && pcs)
 	{
 		write(1, s++, 1);
 		spcf->len += 1;
-		if (spcf->precision > 0)
-			spcf->precision--;
+		if (pcs >= 0)
+			pcs--;
+	}
+}
+
+void	ft_putstr(t_cv *spcf, char *s)
+{
+	if (spcf->flag2 == '-')
+	{
+		ft_puts(spcf, s);
+		ft_width(spcf, s);
+		return ;
+	}
+	else
+	{
+		ft_width(spcf, s);
+		ft_puts(spcf, s);
+		return ;
 	}
 }

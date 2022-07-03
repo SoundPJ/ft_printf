@@ -6,7 +6,7 @@
 /*   By: pjerddee <pjerddee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 08:31:30 by pjerddee          #+#    #+#             */
-/*   Updated: 2022/07/03 05:58:51 by pjerddee         ###   ########.fr       */
+/*   Updated: 2022/07/03 16:34:26 by pjerddee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ int		ft_printf(const char *placeholders, ...);
 int		ft_check(char *s, char c);
 int		ft_strlen(char *s);
 int		ft_min(int a, int b);
-int		ft_max(int a, int b);
 void	ft_putstr(t_cv *spcf, char *s);
 void	ft_putp(t_cv *spcf, size_t n);
 void	ft_putnbr(t_cv *spcf, long n, int base, int ul);

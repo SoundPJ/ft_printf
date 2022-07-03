@@ -6,7 +6,7 @@
 /*   By: pjerddee <pjerddee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 08:26:54 by pjerddee          #+#    #+#             */
-/*   Updated: 2022/07/03 05:59:35 by pjerddee         ###   ########.fr       */
+/*   Updated: 2022/07/03 17:19:15 by pjerddee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,10 @@ static void	get_spcf(const char **s, t_cv *ret)
 		if (ft_check(FLAG1, **s) && ret->width == 0 && ret->precision == 0)
 			ret->flag1 = set_flag1(ret->flag1, **s);
 		else if (ft_check(".", **s))
+		{
 			dot = 1;
+			ret->precision = 0;
+		}
 		else if (ft_check("#", **s))
 			ret->flag1 = '#';
 		else if (ft_check(FLAG2, **s) && dot == 0 && ret->width == 0)
@@ -55,11 +58,7 @@ static void	get_spcf(const char **s, t_cv *ret)
 		else if (ft_check(DIGIT, **s) && dot == 0)
 			ret->width = (ret->width * 10) + (**s - '0');
 		else if (ft_check(DIGIT, **s))
-		{
-			if (ret->precision < 0)
-				ret->precision = 0;
 			ret->precision = (ret->precision * 10) + (**s - '0');
-		}
 		(*s)++;
 	}
 	ret->type = **s;
@@ -116,8 +115,9 @@ int	ft_printf(const char *placeholders, ...)
 int	main(void)
 {
 	int	T = 1;
-	printf("ret: %d\n", printf("|%.6d|\n", 1000));
-	printf("ret: %d\n", ft_printf("|%.6d|\n", 1000));
+
+	printf("ret: %d\n", printf("|%-.3d|\n", 10));
+	printf("ret: %d\n", ft_printf("|%-.3d|\n", 10));
 	// printf("ret: %d\n", ft_printf("|%1.5d|\n", 1000));
 	// printf("ret: %d\n", ft_printf("|%05d|\n", -1));
 	// printf("ret: %d\n", printf("|%01d|\n", 1));
